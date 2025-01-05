@@ -1,0 +1,14 @@
+import pandas as pd
+start = "1/1/2022"
+end = "31/12/2022"
+Calendar=pd.DataFrame(pd.date_range(start,end),columns=['Date'])
+Calendar['Year']=Calendar['Date'].dt.year
+Calendar['Month']=Calendar['Date'].dt.month
+Calendar['Quarter']=Calendar['Date'].dt.quarter
+Calendar['day of WeeK']=Calendar['Date'].dt.dayofweek
+Calendar['DW Abb']=Calendar['Date'].dt.strftime('%a')
+Calendar['TextMonth']=Calendar['Date'].dt.strftime('%b')
+Calendar.set_index(['TextMonth'])
+Calendar.set_index(['Date'],inplace=True)
+Calendar.reset_index(inplace=True)
+Calendar
